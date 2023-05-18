@@ -10,5 +10,5 @@ const conn = mongoose.createConnection(MONGO_URI);
 module.exports = {
   Character: conn.model("Character", charachterSchema),
   Film: conn.model("Film", filmSchema),
-  Planet: conn.model("Film", planetSchema),
+  Planet: conn.model("Planet", planetSchema),
 };

@@ -1,6 +1,6 @@
 const { Schema } = require("mongoose");
 
-const carachterSchema = new Schema({
+const charachterSchema = new Schema({
   _id: String,
   name: String,
   height: String,
@@ -13,5 +13,17 @@ const carachterSchema = new Schema({
   homeworld: { type: String, ref: "Planet" },
   films: [{ type: String, ref: "Film" }],
 });
-
-module.exports = carachterSchema;
+charachterSchema.statics.list = async function () {
+  return await this.find()
+    .populate("homeworld", ["_id", "name"])
+    .populate("films", ["_id", "title"]);
+};
+charachterSchema.statics.get = async function (id) {
+  return await this.findById(id)
+    .populate("homeworld", ["_id", "name"])
+    .populate("films", ["_id", "title"]);
+};
+charachterSchema.statics.insert = async function (character) {
+  return await this.create(character);
+};
+module.exports = charachterSchema;
