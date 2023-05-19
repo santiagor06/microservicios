@@ -1,6 +1,7 @@
 const { handleAsyncError } = require("../utils");
 
 module.exports = {
-  getPlanets: require("./getPlanets"),
+  getPlanets: handleAsyncError(require("./getPlanets")),
+  getIdPlanet: handleAsyncError(require("./getIdPlanet")),
   createPlanets: handleAsyncError(require("./createPlanets")),
 };

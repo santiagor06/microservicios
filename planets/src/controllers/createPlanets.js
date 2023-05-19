@@ -2,6 +2,6 @@ const planets = require("../data/planets");
 const { response } = require("../utils");
 
 module.exports = async (req, res) => {
-  await planets.create();
-  response(res, 201, "se creo el film");
+  const { data } = await axios.post(`http://database:8004/Planet`, req.body);
+  response(res, 201, data);
 };
