@@ -1,6 +1,7 @@
 const { catchAsyncError } = require("../utils");
 
 module.exports = {
-  getFilms: require("./getFilms"),
+  getIdFilms: catchAsyncError(require("./getIdFilms")),
+  getFilms: catchAsyncError(require("./getFilms")),
   createFilm: catchAsyncError(require("./createFilm")),
 };
